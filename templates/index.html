@@ -3,7 +3,9 @@
 <a href="/">Home</a>
 <a href="/history/">Most Recent</a>
 
-
+<div>
+    <pre>{{ cowsay_response }}</pre>
+</div>
 <form action="" method="POST">
 {% csrf_token %}
 {{ form.as_p }}
