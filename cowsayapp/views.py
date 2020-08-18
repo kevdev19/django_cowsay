@@ -19,10 +19,11 @@ def index_view(request):
             InputHistory.objects.create(
                 capture_text=data.get('capture_text')
             )
+
         cowsay_response = subprocess.run(
             ['cowsay', cow_data], capture_output=True, text=True)
         print(cowsay_response.stdout)
-        return render(request, 'index.html', {"form": form, "cowsay_response": cowsay_response.stdout})
+        return render(request, 'index.html', {"form": InputForm(), "cowsay_response": cowsay_response.stdout})
 
     form = InputForm()
     return render(request, 'index.html', {"form": form})
