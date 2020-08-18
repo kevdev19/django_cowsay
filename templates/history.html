@@ -1,0 +1,11 @@
+<a href="/">Home</a>
+<a href="/history/">Most Recent</a>
+
+
+{% for item in history %}
+    <ul style="list-style: none;">
+        <li>{{item.capture_text}}</li>
+    </ul>
+{% endfor %}
+
+{% comment %} {{ history }} {% endcomment %}

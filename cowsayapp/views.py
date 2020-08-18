@@ -21,3 +21,8 @@ def index_view(request):
 
     form = InputForm()
     return render(request, 'index.html', {"form": form})
+
+
+def history_view(request):
+    history = InputHistory.objects.all()
+    return render(request, 'history.html', {"history": history})

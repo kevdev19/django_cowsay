@@ -1,7 +1,11 @@
 <h1>Cowsay app</h1>
 
+<a href="/">Home</a>
+<a href="/history/">Most Recent</a>
+
+
 <form action="" method="POST">
 {% csrf_token %}
-{{ form }}
+{{ form.as_p }}
 <input type="submit" value="Submit">
 </form>
