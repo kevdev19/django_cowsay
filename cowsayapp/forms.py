@@ -2,4 +2,4 @@ from django import forms
 
 
 class InputForm(forms.Form):
-    pass
+    capture_text = forms.CharField(max_length=100)

@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect, reverse
+
+from cowsayapp.models import InputHistory
+from .forms import InputForm
 
 
 # Has a view for the index that does two things:
@@ -7,4 +10,14 @@ from django.shortcuts import render
 
 
 def index_view(request):
-    return render(request, 'index.html', {})
+    if request.method == "POST":
+        form = InputForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            InputHistory.objects.create(
+                capture_text=data.get('capture_text')
+            )
+            return HttpResponseRedirect(reverse("home"))
+
+    form = InputForm()
+    return render(request, 'index.html', {"form": form})
