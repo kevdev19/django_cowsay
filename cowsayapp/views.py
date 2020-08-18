@@ -23,6 +23,8 @@ def index_view(request):
         cowsay_response = subprocess.run(
             ['cowsay', cow_data], capture_output=True, text=True)
         print(cowsay_response.stdout)
+        # Make note that form using InputForm() object to re-render
+        # empty form on submit
         return render(request, 'index.html', {"form": InputForm(), "cowsay_response": cowsay_response.stdout})
 
     form = InputForm()
